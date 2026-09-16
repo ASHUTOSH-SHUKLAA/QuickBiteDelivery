@@ -1,0 +1,40 @@
+### QuickBite API Tests
+# Make sure the server is running on localhost:8080
+
+### Get all restaurants
+GET http://localhost:8080/restaurants
+Accept: application/json
+
+###
+
+### Get menu for restaurant ID 1
+GET http://localhost:8080/restaurants/1/menu
+Accept: application/json
+
+###
+
+### Create a new order
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+    "restaurant_id": 1,
+    "customer_name": "Ashuu Student",
+    "total_amount": 15.98
+}
+
+###
+
+### Get order details (Replace 1 with your actual order ID returned from the POST request)
+GET http://localhost:8080/orders/1
+Accept: application/json
+
+###
+
+### Update order status (Replace 1 with your actual order ID)
+PUT http://localhost:8080/orders/1/status
+Content-Type: application/json
+
+{
+    "status": "Preparing"
+}

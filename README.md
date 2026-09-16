@@ -2,6 +2,8 @@
 
 A RESTful backend service for a food delivery platform built with Go and PostgreSQL. This project demonstrates core backend development skills including database design, REST API implementation, and routing.
 
+**Live API URL:** [https://quickbite-api-5s8i.onrender.com](https://quickbite-api-5s8i.onrender.com)
+
 ## Features
 - **Restaurants & Menus**: View available restaurants and their specific menus.
 - **Order Management**: Place new orders and retrieve order details.

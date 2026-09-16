@@ -50,14 +50,23 @@ func main() {
 	r.HandleFunc("/orders/{id}", getOrder).Methods("GET")
 	r.HandleFunc("/orders/{id}/status", updateOrderStatus).Methods("PUT")
 
-	fmt.Println("Server is running on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	fmt.Printf("Server is running on port %s...\n", port)
+	log.Fatal(http.ListenAndServe(":"+port, r))
 }
 
 func initDB() {
 	var err error
-	// Typically this comes from env vars, hardcoding for simplicity in this demo project
-	connStr := "user=postgres password=postgres dbname=quickbite sslmode=disable"
+	
+	connStr := os.Getenv("DATABASE_URL")
+	if connStr == "" {
+		// Fallback for local development
+		connStr = "user=postgres password=postgres dbname=quickbite sslmode=disable"
+	}
 	db, err = sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)
